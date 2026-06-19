@@ -3,15 +3,12 @@ import os
 
 app = Flask(name)
 
-# ========== YOUR QUESTIONS (Edit here!) ==========
 QUESTIONS = {
     "What is the capital of France?": "Paris",
     "What is 2 + 2?": "4",
     "Which planet is known as the Red Planet?": "Mars"
 }
-# =================================================
 
-# The Quiz Page (HTML)
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html>
@@ -29,7 +26,6 @@ HTML_TEMPLATE = """
 </html>
 """
 
-# The Results Page (HTML)
 RESULTS_TEMPLATE = """
 <!DOCTYPE html>
 <html>
@@ -63,6 +59,5 @@ def submit():
     return render_template_string(RESULTS_TEMPLATE, results=results, score=score, total=len(QUESTIONS))
 
 if name == 'main':
-    # This fixes the Render port issue
     port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port)
