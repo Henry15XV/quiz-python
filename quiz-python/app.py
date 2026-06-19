@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template_string
+import os
 
 app = Flask(name)
 
@@ -62,4 +63,6 @@ def submit():
     return render_template_string(RESULTS_TEMPLATE, results=results, score=score, total=len(QUESTIONS))
 
 if name == 'main':
-    app.run(host='0.0.0.0', port=8080)
+    # This fixes the Render port issue
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)
